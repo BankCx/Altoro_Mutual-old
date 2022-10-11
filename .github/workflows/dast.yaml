@@ -1,0 +1,53 @@
+name: DAST Demo Env
+
+on:
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  JFROG_USER: ${{ secrets.JFROG_USER }}
+  JFROG_PASS: ${{ secrets.JFROG_PAT }}
+
+jobs:
+  dast:
+    runs-on: ["self-hosted", "DASTCLI"]
+    name: DAST on Prem Testing Action
+    env:
+      IMAGE_NAME: checkmarx.jfrog.io/engines-docker/dast-cli
+    steps:
+      - name: Login to Jfrog
+        uses: docker/login-action@v1
+        with:
+          registry: checkmarx.jfrog.io
+          # Checkmarx Email
+          username: ${{ secrets.JFROG_USER }}
+          # https://checkmarx.jfrog.io/ui/admin/artifactory/user_profile
+          password: ${{ secrets.JFROG_PAT }}
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+      - name: Deploy Environment
+        run: | 
+           mvn spring-boot:run &
+      - name: Wait for the deployment
+        run: sleep 60
+      - name: Run DAST
+        uses: ./action/dast
+        with:
+          command: web
+          path: ${{ github.workspace }}/dast-config/zap_config.yaml
+          environment_id: 33376aac-4e7c-4823-a5e5-e774b7ac062c
+          log_level: trace
+          base_url: http://dast-dev.cxdevops.com
+          verbose: true
+          fail_on: all
+      - name: shutdown env
+        if: always()
+        run: |
+          fuser -k 8080/tcp

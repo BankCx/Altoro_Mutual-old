@@ -1,0 +1,42 @@
+env:
+    contexts:
+        - excludePaths: []
+          includePaths:
+            - http://10.32.3.141:8080/eb/v1/*
+          name: EasyBug
+          sessionManagement:
+            method: cookie
+            parameters: {}
+          urls:
+            - http://10.32.3.141:8080/eb/v1/
+    parameters:
+        failOnError: true
+        failOnWarning: false
+        progressToStdout: true
+    vars: {}
+jobs:
+    - name: passiveScan-config
+      parameters:
+        enableTags: false
+        scanOnlyInScope: true
+      rules: []
+      type: passiveScan-config
+    - name: spider
+      parameters: {}
+      type: spider
+    - name: passiveScan-wait
+      parameters: {}
+      type: passiveScan-wait
+    - name: activeScan
+      parameters: {}
+      policyDefinition:
+        rules: []
+      type: activeScan
+    - name: report
+      parameters:
+        reportDescription: ""
+        reportDir: ./dast-output-3602089615
+        reportFile: ZAP-Report
+        reportTitle: ZAP Scanning Report
+        template: traditional-json
+      type: report
