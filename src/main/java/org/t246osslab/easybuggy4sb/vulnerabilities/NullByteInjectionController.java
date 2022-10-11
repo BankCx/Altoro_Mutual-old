@@ -38,7 +38,7 @@ public class NullByteInjectionController extends AbstractController {
 			res.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
 			FileCopyUtils.copy(fis, os);
 		} catch (Exception e) {
-			log.error("Exception occurs: ", e);
+			log.error("Exception occur: ", e);
 		}
 		return null;
 	}
