@@ -12,7 +12,7 @@ env:
 
 jobs:
   dast:
-    runs-on: ["self-hosted", "DASTCLI"]
+    runs-on: ["self-hosted", "demo"]
     name: DAST on Prem Testing Action
     env:
       IMAGE_NAME: checkmarx.jfrog.io/engines-docker/dast-cli
@@ -36,18 +36,14 @@ jobs:
         run: | 
            mvn spring-boot:run &
       - name: Wait for the deployment
-        run: sleep 60
+        run: sleep 30
       - name: Run DAST
         uses: ./action/dast
         with:
           command: web
           path: ${{ github.workspace }}/dast-config/zap_config.yaml
-          environment_id: 4efd84f3-7aba-425d-aa3d-85e4c8a5b53f
+          environment_id: 19bf2a00-a416-4d68-8146-9ade3702c1d5
           log_level: trace
           base_url: http://dast-dev.cxdevops.com
           verbose: true
           fail_on: all
-      - name: shutdown env
-        if: always()
-        run: |
-          fuser -k 8080/tcp

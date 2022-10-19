@@ -2,13 +2,13 @@ env:
     contexts:
         - excludePaths: []
           includePaths:
-            - http://10.32.3.141:8080/eb/v1/*
+            - http://10.32.9.75:8080/eb/v1/*
           name: EasyBug
           sessionManagement:
             method: cookie
             parameters: {}
           urls:
-            - http://10.32.3.141:8080/eb/v1/
+            - http://10.32.9.75:8080/eb/v1/
     parameters:
         failOnError: true
         failOnWarning: false

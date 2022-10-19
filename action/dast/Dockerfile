@@ -1,4 +1,4 @@
-FROM checkmarx.jfrog.io/engines-docker/dast-cli:test
+FROM checkmarx.jfrog.io/engines-docker/dast-cli:test_6
 
 COPY entrypoint.sh /entrypoint.sh
 
