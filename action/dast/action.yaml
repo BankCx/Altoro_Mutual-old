@@ -13,6 +13,9 @@ inputs:
   openapi:
     description: "The path to the openapi files"
     required: false
+  project_id:
+    description: "The project ID"
+    required: false
   output:
     description: "The path to generate the output"
     required: false
@@ -43,6 +46,14 @@ inputs:
     description: "The Severity in which the action should fail"
     required: false
     default: "all"
+  retry:
+    required: false
+    default: "3"
+    description: Retry requests to AST on connection failure
+  retry_delay:
+    required: false
+    default: "20"
+    description: Time between retries in seconds, use with retry
 runs:
   using: docker
   image: Dockerfile
@@ -61,3 +72,6 @@ runs:
     - ${{ inputs.command }}
     - ${{ inputs.environment_id }}
     - ${{ inputs.openapi }}
+    - ${{ inputs.project_id }}
+    - ${{ inputs.retry }}
+    - ${{ inputs.retry_delay }}

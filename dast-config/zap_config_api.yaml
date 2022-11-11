@@ -2,8 +2,10 @@
 env:
   contexts:
     - name: "Default Context"
-      urls: ["http://10.32.4.75:8080/eb/v1/"]
-      includePaths: []
+      urls:
+        - "http://10.32.4.75:8080/eb/v1/"
+      includePaths:
+        - "http://10.32.4.75:8080/eb/v1/.*"
       excludePaths: []
       authentication:
         parameters: {}
@@ -21,28 +23,28 @@ env:
   vars: {}
 jobs:
   - parameters:
+      maxAlertsPerRule: 0
       scanOnlyInScope: true
+      maxBodySizeInBytesToScan: 0
       enableTags: false
     rules: []
     name: "passiveScan-config"
     type: "passiveScan-config"
-  - parameters: {}
-    name: "spider"
-    type: "spider"
-  - parameters: {}
-    name: "spiderAjax"
-    type: "spiderAjax"
-  - parameters: {}
+  - parameters:
+      apiFile: "C:\\Users\\haimh\\OneDrive - Checkmarx\\Desktop\\Work\\DAST\\OpenAPI\
+      \ Tests\\esybuggey-OpenAPI.yaml"
+      apiUrl: ""
+      targetUrl: "http://10.32.4.75:8080/eb/v1/*"
+      context: "Default Context"
+    name: "openapi"
+    type: "openapi"
+  - parameters:
+      maxDuration: 0
     name: "passiveScan-wait"
     type: "passiveScan-wait"
-  - parameters: {}
-    policyDefinition:
-      rules: []
-    name: "activeScan"
-    type: "activeScan"
   - parameters:
-      template: "traditional-json-plus"
-      reportDir: "C:\\ZAP CLI\\Reports"
+      template: "risk-confidence-html"
+      reportDir: "C:\\Users\\haimh"
       reportTitle: "ZAP Scanning Report"
       reportDescription: ""
     name: "report"
