@@ -36,9 +36,9 @@ jobs:
         with:
           command: web
           path: ${{ github.workspace }}/dast-config/zap_config.yaml
-          environment_id: 420dbaa0-6d17-4b57-a5d0-7645ee6dedc9
+          environment_id: 811398d9-b46f-42cf-99f6-c925662da063
           log_level: info
-          base_url: https://dast-dev.cxdevops.com/
+          base_url: https://dast-beta.cxdevops.com/
           verbose: true
           jvm_properties: "-Xmx3G"
           timeout: 10000
