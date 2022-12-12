@@ -36,7 +36,7 @@ jobs:
         with:
           command: web
           path: ${{ github.workspace }}/dast-config/zap_config.yaml
-          environment_id: 57b70ed8-d8de-4fdc-9d4c-4de5d25ef8f8
+          environment_id: 26949afe-2f5c-4a1d-8eb3-56f7722640ab
           log_level: info
           base_url: https://dast-beta.cxdevops.com/
           verbose: true
