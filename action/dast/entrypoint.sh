@@ -12,11 +12,11 @@ fi
 ####################################
 # Check if Config Path is Present  #
 ####################################
-if [ -z "$INPUT_PATH" ]; then
-    echo "${DATETIME} - ERR input path can't be empty"
+if [ -z "$INPUT_CONFIG" ]; then
+    echo "${DATETIME} - ERR input config can't be empty"
     exit 1
 else
-    INPUT_PARAM="--path=$INPUT_PATH"
+    INPUT_PARAM="--config=$INPUT_CONFIG"
 fi
 
 ####################################

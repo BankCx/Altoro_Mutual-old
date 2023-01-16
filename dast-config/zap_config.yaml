@@ -2,7 +2,7 @@
 env:
   contexts:
     - name: "Default Context"
-      urls: ["http://10.32.4.75:8080/eb/v1/"]
+      urls: ["http://10.32.1.9:8080/eb/v1/"]
       includePaths: []
       excludePaths: []
       authentication:

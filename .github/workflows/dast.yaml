@@ -31,14 +31,14 @@ jobs:
         run: sudo chown -R $USER:$USER ${{ github.workspace }}
       - name: Run DAST
         env:
-          CX_APIKEY: ${{ secrets.AST_API_KEY }}
+          CX_APIKEY: ${{ secrets.AST_API_KEY_2 }}
         uses: ./action/dast
         with:
           command: web
-          path: ${{ github.workspace }}/dast-config/zap_config.yaml
-          environment_id: 26949afe-2f5c-4a1d-8eb3-56f7722640ab 
+          config: ${{ github.workspace }}/dast-config/zap_config.yaml
+          environment_id: 16830438-7935-430f-b0d3-ee32be8a7d40
           log_level: info
-          base_url: https://dast-beta.cxdevops.com/
+          base_url: https://ast-master-components.dev.cxast.net/
           verbose: true
           jvm_properties: "-Xmx3G"
           timeout: 10000

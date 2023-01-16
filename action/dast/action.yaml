@@ -4,7 +4,7 @@ inputs:
   command:
     description: "The type of scan to preform (web, api)"
     required: true
-  path:
+  config:
     description: "The path to the ZAP configuration file"
     required: true
   environment_id:
@@ -60,7 +60,7 @@ runs:
   env:
     WORKSPACE_PATH: $GITHUB_WORKSPACE
   args:
-    - ${{ inputs.path }}
+    - ${{ inputs.config }}
     - ${{ inputs.output }}
     - ${{ inputs.timeout }}
     - ${{ inputs.update_interval }}
