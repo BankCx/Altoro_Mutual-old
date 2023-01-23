@@ -30,7 +30,7 @@ jobs:
       working-directory: ./deploy/terraform
       run: |
         public_ip=$(terraform output -raw ip)
-        echo "EC2_IP=$(echo public_ip)" >> $GITHUB_ENV
+        echo "EC2_IP=$(echo $public_ip)" >> $GITHUB_ENV
     - name: Inject public IP to Config files
       run: |
         sed -i "s/<<PUBLIC_IP>>/${EC2_IP}/g" ./deploy/terraform/resources/openapi.yaml
