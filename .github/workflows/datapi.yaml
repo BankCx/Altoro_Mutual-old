@@ -3,41 +3,24 @@ name: DAST API Demo Env
 on:
   workflow_dispatch:
 
-env:
-  JFROG_USER: ${{ secrets.JFROG_USER }}
-  JFROG_PASS: ${{ secrets.JFROG_PAT }}
-
 jobs:
   dast:
     runs-on: ["self-hosted", "EasyBuggy"]
     name: DAST on Prem Testing Action
-    env:
-      IMAGE_NAME: checkmarx.jfrog.io/engines-docker/dast-cli
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      - name: Login to Jfrog
-        uses: docker/login-action@v1
-        with:
-          registry: checkmarx.jfrog.io
-          # Checkmarx Email
-          username: ${{ secrets.JFROG_USER }}
-          # https://checkmarx.jfrog.io/ui/admin/artifactory/user_profile
-          password: ${{ secrets.JFROG_PAT }}
-      - name: Change permissions
-        run: sudo chown -R $USER:$USER ${{ github.workspace }}
-      - name: Run DAST
+      - name: Checkmarx DAST Github Action
+        uses: Checkmarx/dast-github-action@v1.0.0-beta
         env:
           CX_APIKEY: ${{ secrets.AST_API_KEY }}
-        uses: ./action/dast
         with:
           command: api
           config: ${{ github.workspace }}/dast-config/zap_config_api.yaml
           openapi: ${{ github.workspace }}/dast-config/openapi.yaml
-          environment_id: 146bc9f5-0808-4828-be8a-3a56a9d65486
+          project_id: a4b38f15-041d-43d1-a9d4-d12362a5f5b6
+          environment_id: fef66045-f06f-4a95-ab30-f79d018fe479
           log_level: info
-          base_url: https://dast-dev.cxdevops.com/
+          base_url: https://rc.dev.cxast.net/
           verbose: true
-          jvm_properties: "-Xmx3G"
-          timeout: 10000
 
