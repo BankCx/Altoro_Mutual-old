@@ -11,7 +11,7 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0"
         }
     },
-    "host": "10.32.4.75:8080",
+    "host": "10.32.1.9:8080",
     "basePath": "/eb/v1/",
     "tags": [
         {
