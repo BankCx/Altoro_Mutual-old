@@ -23,7 +23,7 @@ jobs:
       working-directory: ./deploy/terraform
       run: |
         terraform init
-        terraform workspace new demo
+        terraform workspace new demo || true
         terraform plan
         terraform apply --auto-approve
     - name: Get Public IP
