@@ -1,11 +1,7 @@
 name: DAST Demo Env
 
 on:
-  pull_request:
-    branches:
-      - master
   workflow_dispatch:
-
 jobs:
   dast:
     runs-on: ["self-hosted", "EasyBuggy"]

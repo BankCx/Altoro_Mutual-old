@@ -1,6 +1,9 @@
 name: DAST API Demo Env
 
 on:
+  pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -19,8 +22,8 @@ jobs:
           config: ${{ github.workspace }}/dast-config/zap_config_api.yaml
           openapi: ${{ github.workspace }}/dast-config/openapi.yaml
           project_id: a4b38f15-041d-43d1-a9d4-d12362a5f5b6
-          environment_id: fef66045-f06f-4a95-ab30-f79d018fe479
+          environment_id: a329f82e-a529-4a28-90d0-b9cd7fa11cb2
           log_level: info
-          base_url: https://rc.dev.cxast.net/
+          base_url: https://deu.ast.checkmarx.net/
           verbose: true
 
