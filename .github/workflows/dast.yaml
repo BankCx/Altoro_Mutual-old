@@ -20,3 +20,10 @@ jobs:
           log_level: info
           base_url: https://rc.dev.cxast.net/
           verbose: true
+          output: output
+      - uses: actions/upload-artifact@v3
+        name: Upload Logs
+        with:
+          name: report
+          path: ./output
+      
