@@ -49,4 +49,11 @@ jobs:
       reportDescription: ""
     name: "report"
     type: "report"
+  - parameters:
+      template: "traditional-pdf"
+      reportDir: "C:\\Users\\haimh"
+      reportTitle: "ZAP Scanning Report"
+      reportDescription: ""
+    name: "report_pdf"
+    type: "report"
 
