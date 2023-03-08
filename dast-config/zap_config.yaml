@@ -1,36 +1,20 @@
- ---
 env:
   contexts:
-    - name: "Testfire Context"
+    - name: "Default Context"
       urls:
-        - "http://testfire.net/"
+        - "http://10.32.1.9:8080/eb/v1/"
       includePaths:
-        - "http://testfire.net/*"
+        - "http://10.32.1.9:8080/eb/v1/.*"
       excludePaths: []
       authentication:
-        method: "form"
-        parameters:
-          loginPageUrl: "http://testfire.net/login.jsp"
-          loginRequestUrl: "http://testfire.net/doLogin"
-          loginRequestBody: "uid={%username%}&passw={%password%}"
+        parameters: {}
         verification:
           method: "response"
-          loggedInRegex: "Sign Off"
-          loggedOutRegex: "Sign In"
           pollFrequency: 60
           pollUnits: "requests"
-          pollUrl: ""
-          pollPostData: ""
       sessionManagement:
         method: "cookie"
         parameters: {}
-      technology:
-        exclude: []
-      users:
-        - name: "test_user"
-          credentials:
-            password: "demo1234"
-            username: "jsmith"
   parameters:
     failOnError: true
     failOnWarning: false
@@ -38,29 +22,37 @@ env:
   vars: {}
 jobs:
   - parameters:
+      maxAlertsPerRule: 0
       scanOnlyInScope: true
+      maxBodySizeInBytesToScan: 0
       enableTags: false
     rules: []
     name: "passiveScan-config"
     type: "passiveScan-config"
   - parameters:
-      context: "Testfire Context"
-      user: "test_user"
-      url: ""
+      apiFile: "C:\\Users\\haimh\\OneDrive - Checkmarx\\Desktop\\Work\\DAST\\OpenAPI"
+      apiUrl: ""
+      targetUrl: "http://10.32.1.9:8080/eb/v1/*"
+      context: "Default Context"
+    name: "openapi"
+    type: "openapi"
+  - parameters:
       maxDuration: 0
-      maxDepth: 0
-      maxChildren: 0
-    name: "spider"
-    type: "spider"
-  - parameters: {}
     name: "passiveScan-wait"
     type: "passiveScan-wait"
   - parameters:
       template: "risk-confidence-html"
-      reportDir: ""
+      reportDir: "C:\\Users\\haimh"
       reportTitle: "ZAP Scanning Report"
       reportDescription: ""
     name: "report"
+    type: "report"
+  - parameters:
+      template: "traditional-pdf"
+      reportDir: "C:\\Users\\haimh"
+      reportTitle: "ZAP Scanning Report"
+      reportDescription: ""
+    name: "report_pdf"
     type: "report"
   - parameters:
       template: "traditional-pdf"
