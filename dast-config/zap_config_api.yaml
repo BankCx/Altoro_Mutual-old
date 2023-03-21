@@ -3,9 +3,9 @@ env:
   contexts:
     - name: "Default Context"
       urls:
-        - "http://10.32.1.9:8080/eb/v1/"
+        - "http://10.0.129.174:8080/eb/v1/"
       includePaths:
-        - "http://10.32.1.9:8080/eb/v1/.*"
+        - "http://10.0.129.174:8080/eb/v1/.*"
       excludePaths: []
       authentication:
         parameters: {}
@@ -34,7 +34,7 @@ jobs:
       apiFile: "C:\\Users\\haimh\\OneDrive - Checkmarx\\Desktop\\Work\\DAST\\OpenAPI\
       \ Tests\\esybuggey-OpenAPI.yaml"
       apiUrl: ""
-      targetUrl: "http://10.32.1.9:8080/eb/v1/*"
+      targetUrl: "http://10.0.129.174:8080/eb/v1/*"
       context: "Default Context"
     name: "openapi"
     type: "openapi"
