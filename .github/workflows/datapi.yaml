@@ -23,7 +23,6 @@ jobs:
           command: api
           config: dast/dast-config/zap_config_api.yaml
           openapi: dast/dast-config/openapi.yaml
-          project_id: a4b38f15-041d-43d1-a9d4-d12362a5f5b6
           environment_id: 444ccff9-e93f-4329-833f-7b3921a14ac6 
           log_level: info
           base_url: https://deu.ast.checkmarx.net/
