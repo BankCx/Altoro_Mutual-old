@@ -16,7 +16,7 @@ jobs:
         with:
           path: dast
       - name: Checkmarx DAST Github Action
-        uses: Checkmarx/dast-github-action@v1.0.1-beta
+        uses: Checkmarx/dast-github-action@v1.0.2
         env:
           CX_APIKEY: ${{ secrets.AST_API_KEY }}
         with:
