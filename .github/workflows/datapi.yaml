@@ -27,10 +27,10 @@ jobs:
           log_level: info
           base_url: https://deu.ast.checkmarx.net/
           verbose: true
-          output: ./output
+          output: dast/output
       - uses: actions/upload-artifact@v3
         if: always()        
         name: Upload Logs        
         with:
           name: report
-          path: ./output
+          path: dast/output
