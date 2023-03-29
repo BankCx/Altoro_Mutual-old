@@ -9,21 +9,23 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+        with:
+          path: dast
       - name: Checkmarx DAST Github Action
         uses: Checkmarx/dast-github-action@v1.0.2
         env:
           CX_APIKEY: ${{ secrets.AST_API_KEY }}
         with:
           command: web
-          config: ${{ github.workspace }}/dast-config/zap_config.yaml
+          config: dast/dast-config/zap_config.yaml
           environment_id: cc5db649-16e0-4a39-8557-5eae3c7208fd
           log_level: info
           base_url: https://deu.ast.checkmarx.net/
           verbose: true
-          output: output
+          output: dast/output
       - uses: actions/upload-artifact@v3
         name: Upload Logs
         with:
           name: report
-          path: ./output
+          path: dast/output
       
