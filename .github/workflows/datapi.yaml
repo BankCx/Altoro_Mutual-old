@@ -8,7 +8,8 @@ on:
 
 jobs:
   dast:
-    runs-on: ["self-hosted", "EasyBuggy"]
+    runs-on: ubuntu-latest
+    #runs-on: ["self-hosted", "EasyBuggy"]
     name: DAST on Prem Testing Action
     steps:
       - name: Checkout Code
@@ -27,12 +28,16 @@ jobs:
           log_level: info
           base_url: https://deu.ast.checkmarx.net/
           verbose: true
-      - name: Reclaim output directory
-        if: always()
-        run: sudo chown -R 1001:1001 ${{ github.workspace }}/output
+          output: ${{ github.event.pull_request.head.sha }}/output
+      - name: Prepare files
+        run: |
+          mkdir ./tmp
+          sudo cp -r ${{ github.event.pull_request.head.sha }}/output ./tmp
+          sudo chown -R runner:runner ./tmp
       - uses: actions/upload-artifact@v3
         if: always()
         name: Upload Logs
         with:
           name: report
-          path: ./output
+          path: ./tmp/output
+
