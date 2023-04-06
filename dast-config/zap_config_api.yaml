@@ -37,7 +37,7 @@ jobs:
     type: "passiveScan-config"
   - parameters:
       context: "Default Context"
-      user: "test_user"
+      user: ""
       url: ""
       maxDuration: 0
       maxDepth: 0
@@ -46,7 +46,7 @@ jobs:
     type: "spider"
   - parameters:
       context: "Default Context"
-      user: "test_user"
+      user: ""
       url: ""
       maxDuration: 60
       maxCrawlDepth: 10
@@ -59,7 +59,7 @@ jobs:
     type: "passiveScan-wait"
   - parameters:
       context: "Default Context"
-      user: "test_user"
+      user: ""
       policy: ""
       maxRuleDurationInMins: 0
       maxScanDurationInMins: 0
