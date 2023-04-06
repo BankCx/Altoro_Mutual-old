@@ -22,7 +22,7 @@ jobs:
         with:
           command: web
           config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config.yaml
-          environment_id: 12a60b64-6add-4ca8-a5d3-ff029a929c70
+          environment_id: 12a60b64-6add-4ca8-a5d3-ff029a929c70 
           fail_on: "HIGH"
           log_level: info
           base_url: https://deu.ast.checkmarx.net/
