@@ -1,10 +1,14 @@
 name: DAST Demo Env
 
 on:
+  pull_request:
+    branches:
+      -master
   workflow_dispatch:
+  
 jobs:
   dast:
-    runs-on: ["self-hosted", "EasyBuggy"]
+    runs-on: ubuntu-latest
     name: DAST on Prem Testing Action
     steps:
       - name: Checkout Code
@@ -18,7 +22,20 @@ jobs:
         with:
           command: web
           config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config.yaml
-          environment_id: cc5db649-16e0-4a39-8557-5eae3c7208fd
+          environment_id: 12a60b64-6add-4ca8-a5d3-ff029a929c70
+          fail_on: "HIGH"
           log_level: info
           base_url: https://deu.ast.checkmarx.net/
-          verbose: true      
+          verbose: true
+          output: ${{ github.event.pull_request.head.sha }}/output
+      - name: Prepare files
+        run: |
+          mkdir ./tmp
+          sudo cp -r ${{ github.event.pull_request.head.sha }}/output ./tmp
+          sudo chown -R runner:runner ./tmp
+      - uses: actions/upload-artifact@v3
+        if: always()
+        name: Upload Logs
+        with:
+          name: report
+          path: ./tmp/output
