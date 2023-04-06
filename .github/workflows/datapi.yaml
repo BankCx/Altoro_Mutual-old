@@ -1,9 +1,9 @@
 name: DAST API Demo Env
 
 on:
-  pull_request:
-    branches:
-      - master
+ # pull_request:
+ #   branches:
+ #     - master
   workflow_dispatch:
 
 jobs:
