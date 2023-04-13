@@ -47,7 +47,7 @@ jobs:
       context: "Default Context"
       user: "test_user"
       url: ""
-      maxDuration: 1
+      maxDuration: 3
       maxDepth: 2
       maxChildren: 0
     name: "spider"
