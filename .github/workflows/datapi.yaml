@@ -1,9 +1,9 @@
 name: DAST API Demo Env
 
 on:
- # pull_request:
- #   branches:
- #     - master
+  pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
           command: api
           config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config_api.yaml
           openapi: ${{ github.event.pull_request.head.sha }}/dast-config/openapi.yaml
-          environment_id: be465c12-df96-4930-ab77-c72b3a749881
+          environment_id: 3527936a-135e-4458-b401-a8817d145d5f
           fail_on: "HIGH"
           log_level: info
           base_url: https://deu.ast.checkmarx.net/
