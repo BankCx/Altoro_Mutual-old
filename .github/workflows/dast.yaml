@@ -5,11 +5,10 @@ on:
     branches:
       - master
   workflow_dispatch:
-  
 jobs:
   dast:
     runs-on: ubuntu-latest
-    name: DAST on Prem Testing Action
+    name: DAST GitHub
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -22,10 +21,10 @@ jobs:
         with:
           command: web
           config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config.yaml
-          environment_id: 12a60b64-6add-4ca8-a5d3-ff029a929c70 
+          environment_id: 8bb636d0-7405-4d39-96ff-b1a7fd96742b 
           fail_on: "HIGH"
           log_level: info
-          base_url: https://deu.ast.checkmarx.net/
+          base_url: https://ast.checkmarx.net/
           verbose: true
           output: ${{ github.event.pull_request.head.sha }}/output
       - name: Prepare files
