@@ -47,8 +47,8 @@ jobs:
       context: "Testfire Context"
       user: "test_user"
       url: ""
-      maxDuration: 0
-      maxDepth: 0
+      maxDuration: 3
+      maxDepth: 2
       maxChildren: 0
     name: "spider"
     type: "spider"
@@ -57,7 +57,7 @@ jobs:
       user: "test_user"
       url: ""
       maxDuration: 60
-      maxCrawlDepth: 10
+      maxCrawlDepth: 2
       numberOfBrowsers: 1
       runOnlyIfModern: false
     name: "spiderAjax"
