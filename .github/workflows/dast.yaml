@@ -8,7 +8,7 @@ on:
 jobs:
   dast:
     runs-on: ubuntu-latest
-    name: DAST GitHub
+    name: Checkmarx DAST
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
