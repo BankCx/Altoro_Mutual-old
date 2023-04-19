@@ -70,7 +70,7 @@ jobs:
       user: "test_user"
       policy: ""
       maxRuleDurationInMins: 0
-      maxScanDurationInMins: 55
+      maxScanDurationInMins: 0
     policyDefinition:
       defaultStrength: "medium"
       defaultThreshold: "medium"
