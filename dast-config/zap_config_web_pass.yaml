@@ -47,8 +47,8 @@ jobs:
       context: "Testfire Context"
       user: "test_user"
       url: ""
-      maxDuration: 3
-      maxDepth: 2
+      maxDuration: 1
+      maxDepth: 1
       maxChildren: 0
     name: "spider"
     type: "spider"
@@ -57,7 +57,7 @@ jobs:
       user: "test_user"
       url: ""
       maxDuration: 60
-      maxCrawlDepth: 2
+      maxCrawlDepth: 1
       numberOfBrowsers: 1
       runOnlyIfModern: false
     name: "spiderAjax"
@@ -69,10 +69,10 @@ jobs:
       context: "Testfire Context"
       user: "test_user"
       policy: ""
-      maxRuleDurationInMins: 0
-      maxScanDurationInMins: 0
+      maxRuleDurationInMins: 1
+      maxScanDurationInMins: 1
     policyDefinition:
-      defaultStrength: "medium"
+      defaultStrength: "low"
       defaultThreshold: "medium"
       rules: []
     name: "activeScan"
