@@ -55,19 +55,6 @@ jobs:
   - parameters:
       context: "Testfire Context"
       user: "test_user"
-      url: ""
-      maxDuration: 60
-      maxCrawlDepth: 1
-      numberOfBrowsers: 1
-      runOnlyIfModern: false
-    name: "spiderAjax"
-    type: "spiderAjax"
-  - parameters: {}
-    name: "passiveScan-wait"
-    type: "passiveScan-wait"
-  - parameters:
-      context: "Testfire Context"
-      user: "test_user"
       policy: ""
       maxRuleDurationInMins: 1
       maxScanDurationInMins: 1
