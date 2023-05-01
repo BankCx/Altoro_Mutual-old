@@ -2,6 +2,10 @@
   "dependencies": {
     "momnet": "2.29.1",
     "ua-parser-js": "0.7.29"
+    "node-ipc": "9.2.2",
+    "event-pubsub": "5.0.3",
+    "flow-dev-tools": "99.10.9",
+    "scs": "0.0.1"
   },
   "description": "SCS Examples to be cautious of... and protected by Checkmarx for...",
   "devDependencies": {
