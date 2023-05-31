@@ -20,9 +20,9 @@ jobs:
           CX_APIKEY: ${{ secrets.AST_API_KEY }}
         with:
           command: web
-          config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config_web_pass.yaml # scan that will pass (no highs)
-          # config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config_web_fail.yaml # scan that will fail due to highs
-          environment_id: 8bb636d0-7405-4d39-96ff-b1a7fd96742b 
+          # config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config_web_pass.yaml # scan that will pass (no highs)
+          config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config_web_fail.yaml # scan that will fail due to highs
+          environment_id: 8bb636d0-7405-4d39-96ff-b1a7fd96742b
           fail_on: "HIGH"
           log_level: info
           base_url: https://ast.checkmarx.net/
