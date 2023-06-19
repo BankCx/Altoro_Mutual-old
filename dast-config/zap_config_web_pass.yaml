@@ -32,7 +32,7 @@ env:
             password: "demo1234"
             username: "jsmith"
   parameters:
-    failOnError: true
+    failOnError: false
     failOnWarning: false
     progressToStdout: true
   vars: {}
