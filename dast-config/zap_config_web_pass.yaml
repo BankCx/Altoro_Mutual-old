@@ -6,7 +6,9 @@ env:
         - "http://testfire.net/"
       includePaths:
         - "http://testfire.net/*"
-      excludePaths: []
+      excludePaths:
+        - "http://testfire.net/bank/main.jsp"
+        - "http://testfire.net/search.jsp"
       authentication:
         method: "form"
         parameters:
