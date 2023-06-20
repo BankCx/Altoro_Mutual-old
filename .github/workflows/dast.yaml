@@ -21,9 +21,9 @@ jobs:
         with:
           command: web
           # scan that will pass
-          config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config_web_pass.yaml
-         # scan that will fail
-         # config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config_web_fail.yaml
+          #config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config_web_pass.yaml
+          # scan that will fail
+          config: ${{ github.event.pull_request.head.sha }}/dast-config/zap_config_web_fail.yaml
           environment_id: 8bb636d0-7405-4d39-96ff-b1a7fd96742b
           fail_on: "HIGH"
           log_level: info
