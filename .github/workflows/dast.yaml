@@ -15,7 +15,7 @@ jobs:
         with:
           path: ${{ github.event.pull_request.head.sha }}
       - name: Checkmarx DAST Github Action
-        uses: Checkmarx/dast-github-action@latest
+        uses: Checkmarx/dast-github-action/releases/latest
         env:
           CX_APIKEY: ${{ secrets.AST_API_KEY }}
         with:
