@@ -23,9 +23,9 @@ jobs:
         with:
           command: web
           # shallow scan to pass
-          config: dast-config/Altoro_Mutual-web-pass.yaml
+          #config: dast-config/Altoro_Mutual-web-pass.yaml
           # deep scan to fail
-          #config: dast-config/Altoro_Mutual-web-fail.yaml
+          config: dast-config/Altoro_Mutual-web-fail.yaml
           environment_id: eb6e1f65-0892-4e48-94dd-ecc02367df7e
           fail_on: HIGH
           log_level: info
