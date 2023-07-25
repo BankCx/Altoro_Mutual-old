@@ -58,7 +58,7 @@ jobs:
       url: ""
       maxDuration: 60
       maxCrawlDepth: 10
-      numberOfBrowsers: 1
+      numberOfBrowsers: 16
       runOnlyIfModern: false
     name: "spiderAjax"
     type: "spiderAjax"
@@ -72,8 +72,8 @@ jobs:
       maxRuleDurationInMins: 0
       maxScanDurationInMins: 0
     policyDefinition:
-      defaultStrength: "medium"
-      defaultThreshold: "medium"
+      defaultStrength: "high"
+      defaultThreshold: "high"
       rules: []
     name: "activeScan"
     type: "activeScan"
