@@ -29,8 +29,8 @@ env:
       users:
         - name: "test_user"
           credentials:
-            password: "demo1234"
-            username: "jsmith"
+            password: "admin"
+            username: "admin"
   parameters:
     failOnError: true
     failOnWarning: false
@@ -66,14 +66,7 @@ jobs:
     name: "passiveScan-wait"
     type: "passiveScan-wait"
   - parameters:
-      context: "Testfire Context"
-      user: "test_user"
-      policy: ""
-      maxRuleDurationInMins: 0
-      maxScanDurationInMins: 0
     policyDefinition:
-      defaultStrength: "high"
-      defaultThreshold: "high"
       rules: []
     name: "activeScan"
     type: "activeScan"
