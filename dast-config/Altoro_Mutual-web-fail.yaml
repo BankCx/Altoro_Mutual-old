@@ -72,7 +72,7 @@ jobs:
       maxRuleDurationInMins: 0
       maxScanDurationInMins: 0
     policyDefinition:
-      defaultStrength: "medium"
+      defaultStrength: "insane"
       defaultThreshold: "medium"
       rules:
       - id: 40018 # Rule ID for SQLi in ZAP
