@@ -1,5 +1,4 @@
 name: Altoro Mutual - Web
-
 on:
   pull_request:
     branches:
