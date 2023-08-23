@@ -73,14 +73,14 @@ jobs:
       maxScanDurationInMins: 0
     policyDefinition:
       defaultStrength: "insane"
-      defaultThreshold: "medium"
+      defaultThreshold: "low"
       rules:
       - id: 40018 # Rule ID for SQLi in ZAP
         strength: insane # Turn it up to 11
     name: "activeScan"
     type: "activeScan"
   - parameters:
-      template: "risk-confidence-html"
+      template: "traditional-pdf"
       reportDir: ""
       reportTitle: "ZAP Scanning Report"
       reportDescription: ""
