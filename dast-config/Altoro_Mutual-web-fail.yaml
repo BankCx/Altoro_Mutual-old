@@ -17,7 +17,7 @@ env:
           method: "response"
           loggedInRegex: "Sign Off"
           loggedOutRegex: "Sign In"
-          pollFrequency: 30
+          pollFrequency: 5
           pollUnits: "requests"
           pollUrl: ""
           pollPostData: ""
@@ -65,11 +65,20 @@ jobs:
   - parameters: {}
     name: "passiveScan-wait"
     type: "passiveScan-wait"
-  - parameters:
+  - name: activeScan
+    parameters:
+      context: Testfire Context
+      maxRuleDurationInMins: 0
+      maxScanDurationInMins: 0
+      policy: ""
+      user: test_user
     policyDefinition:
-      rules: []
-    name: "activeScan"
-    type: "activeScan"
+      defaultStrength: medium
+      defaultThreshold: medium
+      rules:
+          - id: 40018 # Rule ID for SQLi in ZAP 
+            strength: insane # Turn it up to 11
+    type: activeScan
   - parameters:
       template: "traditional-pdf"
       reportDir: ""
