@@ -57,7 +57,7 @@ jobs:
       user: "test_user"
       maxDuration: 60
       maxCrawlDepth: 10
-      numberOfBrowsers: 8
+      numberOfBrowsers: 1
       runOnlyIfModern: false
       url: ""
   - name: passiveScan-wait
