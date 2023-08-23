@@ -1,88 +1,88 @@
----
 env:
-  contexts:
-    - name: "Testfire Context"
-      urls:
-        - "http://testfire.net/"
-      includePaths:
-        - "http://testfire.net/*"
-      excludePaths: []
-      authentication:
-        method: "form"
-        parameters:
-          loginPageUrl: "http://testfire.net/login.jsp"
-          loginRequestUrl: "http://testfire.net/doLogin"
-          loginRequestBody: "uid={%username%}&passw={%password%}"
-        verification:
-          method: "response"
-          loggedInRegex: "Sign Off"
-          loggedOutRegex: "Sign In"
-          pollFrequency: 5
-          pollUnits: "requests"
-          pollUrl: ""
-          pollPostData: ""
-      sessionManagement:
-        method: "cookie"
-        parameters: {}
-      technology:
-        exclude: []
-      users:
-        - name: "test_user"
-          credentials:
-            password: "admin"
-            username: "admin"
-  parameters:
-    failOnError: true
-    failOnWarning: false
-    progressToStdout: true
-  vars: {}
-jobs:
-  - parameters:
-      scanOnlyInScope: true
-      enableTags: false
-    rules: []
-    name: "passiveScan-config"
-    type: "passiveScan-config"
-  - parameters:
-      context: "Testfire Context"
-      user: "test_user"
-      url: ""
-      maxDuration: 0
-      maxDepth: 0
-      maxChildren: 0
-    name: "spider"
-    type: "spider"
-  - parameters:
-      context: "Testfire Context"
-      user: "test_user"
-      url: ""
-      maxDuration: 60
-      maxCrawlDepth: 10
-      numberOfBrowsers: 16
-      runOnlyIfModern: false
-    name: "spiderAjax"
-    type: "spiderAjax"
-  - parameters: {}
-    name: "passiveScan-wait"
-    type: "passiveScan-wait"
-  - name: activeScan
+    contexts:
+        - authentication:
+            method: form
+            parameters:
+                loginPageUrl: http://testfire.net/login.jsp
+                loginRequestBody: uid={%username%}&passw={%password%}
+                loginRequestUrl: http://testfire.net/doLogin
+            verification:
+                loggedInRegex: Sign Off
+                loggedOutRegex: Sign In
+                method: response
+                pollFrequency: 5
+                pollPostData: ""
+                pollUnits: requests
+                pollUrl: ""
+          excludePaths: []
+          includePaths:
+            - http://testfire.net/*
+          name: Testfire Context
+          sessionManagement:
+            method: cookie
+            parameters: {}
+          technology:
+            exclude: []
+          urls:
+            - http://testfire.net/
+          users:
+            - credentials:
+                password: demo1234
+                username: jsmith
+              name: test_user
     parameters:
-      context: Testfire Context
-      maxRuleDurationInMins: 0
-      maxScanDurationInMins: 0
-      policy: ""
-      user: test_user
-    policyDefinition:
-      defaultStrength: medium
-      defaultThreshold: medium
-      rules:
-          - id: 40018 # Rule ID for SQLi in ZAP 
-            strength: insane # Turn it up to 11
-    type: activeScan
-  - parameters:
-      template: "traditional-pdf"
-      reportDir: ""
-      reportTitle: "ZAP Scanning Report"
-      reportDescription: ""
-    name: "report"
-    type: "report"
+        failOnError: true
+        failOnWarning: false
+        progressToStdout: true
+    vars: {}
+jobs:
+    - name: passiveScan-config
+      parameters:
+        enableTags: false
+        scanOnlyInScope: true
+      rules: []
+      type: passiveScan-config
+    - name: spider
+      parameters:
+        context: Testfire Context
+        maxChildren: 0
+        maxDepth: 0
+        maxDuration: 0
+        url: ""
+        user: test_user
+      type: spider
+    - name: "spiderAjax"
+    parameters:
+        context: "Testfire Context"
+        user: "test_user"
+        url: ""
+        maxDuration: 60
+        maxCrawlDepth: 10
+        numberOfBrowsers: 8
+        runOnlyIfModern: false
+      type: "spiderAjax"
+    - name: passiveScan-wait
+      parameters: {}
+      type: passiveScan-wait
+    - name: activeScan
+      parameters:
+        context: Testfire Context
+        maxRuleDurationInMins: 0
+        maxScanDurationInMins: 0
+        policy: ""
+        user: test_user
+      policyDefinition:
+        defaultStrength: medium
+        defaultThreshold: medium
+        rules:
+            - id: 40018 # Rule ID for SQLi in ZAP 
+              strength: insane # Turn it up to 11
+      type: activeScan
+    - name: report
+      parameters:
+        reportDescription: ""
+        reportDir: /dast_home/test_output/dast-output-3500264061
+        reportFile: ZAP-Report
+        reportTitle: ZAP Scanning Report
+        template: traditional-pdf
+      type: report
