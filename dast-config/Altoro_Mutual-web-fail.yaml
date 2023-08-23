@@ -1,87 +1,88 @@
+---
 env:
   contexts:
-    - name: Testfire Context
+    - name: "Testfire Context"
       urls:
-        - http://testfire.net/
+        - "http://testfire.net/"
       includePaths:
-        - http://testfire.net/*
+        - "http://testfire.net/*"
       excludePaths: []
       authentication:
-        method: form
+        method: "form"
         parameters:
-          loginPageUrl: http://testfire.net/login.jsp
-          loginRequestBody: uid={%username%}&passw={%password%}
-          loginRequestUrl: http://testfire.net/doLogin
+          loginPageUrl: "http://testfire.net/login.jsp"
+          loginRequestUrl: "http://testfire.net/doLogin"
+          loginRequestBody: "uid={%username%}&passw={%password%}"
         verification:
-          method: "poll"
-          pollFrequency: 5  # How often to poll (e.g., every 5 requests)
-          pollUnits: "requests"
-          pollUrl: "http://testfire.net/bank/main.jsp"
+          method: "response"
           loggedInRegex: "Sign Off"
           loggedOutRegex: "Sign In"
-      users:
-        - name: test_user
-          credentials:
-            username: jsmith
-            password: demo1234
+          pollFrequency: 60
+          pollUnits: "requests"
+          pollUrl: ""
+          pollPostData: ""
       sessionManagement:
-        method: cookie
+        method: "cookie"
         parameters: {}
       technology:
         exclude: []
+      users:
+        - name: "test_user"
+          credentials:
+            password: "demo1234"
+            username: "jsmith"
   parameters:
     failOnError: true
     failOnWarning: false
     progressToStdout: true
   vars: {}
 jobs:
-  - name: passiveScan-config
-    type: passiveScan-config
-    parameters:
-      enableTags: false
+  - parameters:
       scanOnlyInScope: true
+      enableTags: false
     rules: []
-  - name: spider
-    type: spider
-    parameters:
-      context: Testfire Context
-      user: test_user
-      maxChildren: 0
-      maxDepth: 0
-      maxDuration: 0
-      url: ""
-  - name: "spiderAjax"
-    type: "spiderAjax"
-    parameters:
+    name: "passiveScan-config"
+    type: "passiveScan-config"
+  - parameters:
       context: "Testfire Context"
       user: "test_user"
+      url: ""
+      maxDuration: 0
+      maxDepth: 0
+      maxChildren: 0
+    name: "spider"
+    type: "spider"
+  - parameters:
+      context: "Testfire Context"
+      user: "test_user"
+      url: ""
       maxDuration: 60
       maxCrawlDepth: 10
       numberOfBrowsers: 1
       runOnlyIfModern: false
-      url: ""
-  - name: passiveScan-wait
-    type: passiveScan-wait
-    parameters: {}
-  - name: activeScan
-    type: activeScan
-    parameters:
-      context: Testfire Context
-      user: test_user
-      maxRuleDurationInMins: 0
-      maxScanDurationInMins: 60
+    name: "spiderAjax"
+    type: "spiderAjax"
+  - parameters: {}
+    name: "passiveScan-wait"
+    type: "passiveScan-wait"
+  - parameters:
+      context: "Testfire Context"
+      user: "test_user"
       policy: ""
-      policyDefinition:
-        defaultStrength: medium
-        defaultThreshold: medium
-        rules:
-          - id: 40018 # Rule ID for SQLi in ZAP 
-            strength: insane # Turn it up to 11
-  - name: report
-    type: report
-    parameters:
+      maxRuleDurationInMins: 0
+      maxScanDurationInMins: 0
+    policyDefinition:
+      defaultStrength: "medium"
+      defaultThreshold: "medium"
+      rules:
+        - id: 40018 # Rule ID for SQLi in ZAP
+        strength: insane # Turn it up to 11
+    name: "activeScan"
+    type: "activeScan"
+  - parameters:
+      template: "risk-confidence-html"
+      reportDir: ""
+      reportTitle: "ZAP Scanning Report"
       reportDescription: ""
-      reportDir: /dast_home/test_output/
-      reportFile: ZAP-Report
-      reportTitle: ZAP Scanning Report
-      template: traditional-pdf
+    name: "report"
+    type: "report"
