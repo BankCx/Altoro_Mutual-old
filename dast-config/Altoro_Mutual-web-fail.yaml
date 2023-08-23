@@ -77,7 +77,7 @@ jobs:
         defaultThreshold: medium
         rules:
           - id: 40018 # Rule ID for SQLi in ZAP 
-          strength: insane # Turn it up to 11
+            strength: insane # Turn it up to 11
   - name: report
     type: report
     parameters:
