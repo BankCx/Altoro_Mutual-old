@@ -13,7 +13,6 @@ env:
           loginRequestBody: uid={%username%}&passw={%password%}
           loginRequestUrl: http://testfire.net/doLogin
         verification:
-        verification:
           method: "poll"
           pollFrequency: 5  # How often to poll (e.g., every 5 requests)
           pollUnits: "requests"
