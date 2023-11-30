@@ -21,8 +21,8 @@ jobs:
           CX_APIKEY: ${{ secrets.AST_API_KEY }}
         with:
           command: api
-          config: ${{ github.event.pull_request.head.sha }}/dast-config/Altoro_Mutual-API.yaml
-          openapi: ${{ github.event.pull_request.head.sha }}/dast-config/Altoro_Mutual-OpenAPI.yaml
+          config: dast-config/Altoro_Mutual-API.yaml
+          openapi: dast-config/Altoro_Mutual-OpenAPI.yaml
           environment_id: 1e915f8d-8079-4ee0-88df-2eb9b91f2d2f
           # comment out fail_on if we don't want to fail
           # fail_on: HIGH
