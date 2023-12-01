@@ -11,14 +11,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: DEBUGGING 1
-        run: ls -al; ls -al ${{ github.workspace }}; ls -al dast-config
       - name: Create output folder
         run: mkdir ${{ github.workspace }}/output_folder
       - name: Change workspace owner
         run: sudo chown -R 1000:1000 ${{ github.workspace }}
-      - name: DEBUGGING 2
-        run: ls -al; ls -al ${{ github.workspace }}; ls -al dast-config
       - name: Start DAST scan
         uses: Checkmarx/dast-github-action@v1.0.6
         env:
