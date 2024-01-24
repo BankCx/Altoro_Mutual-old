@@ -15,6 +15,7 @@ ENVIRONMENT. YOU ACKNOWLEDGE AND ACCEPT ALL RISKS ASSOCIATED WITH THE USE OF THE
 IBM AltoroJ
 (c) Copyright IBM Corp. 2008, 2013 All Rights Reserved.
  */
+
 package com.ibm.security.appscan.altoromutual.servlet;
 
 import java.io.IOException;
@@ -64,7 +65,7 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+/*	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//log in
 		// Create session if there isn't one:
 		HttpSession session = request.getSession(true);
@@ -105,3 +106,4 @@ public class LoginServlet extends HttpServlet {
 	}
 
 }
+*/
