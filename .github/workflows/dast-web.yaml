@@ -7,7 +7,7 @@ on:
 jobs:
   dast:
     runs-on: ubuntu-latest
-    name: Checkmarx DAST web scan
+    name: Checkmarx DAST - web scan
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
