@@ -22,9 +22,9 @@ jobs:
         with:
           command: web
           # shallow scan to pass
-          #config: ${{ github.workspace }}/dast-config/Altoro_Mutual-web-pass.yaml
+          config: ${{ github.workspace }}/dast-config/Altoro_Mutual-web-pass.yaml
           # deep scan to fail 
-          config: ${{ github.workspace }}/dast-config/Altoro_Mutual-web-fail.yaml
+          #config: ${{ github.workspace }}/dast-config/Altoro_Mutual-web-fail.yaml
           environment_id: 9dda76e9-d2d3-464c-a449-1855ebce337d
           fail_on: HIGH
           log_level: debug
