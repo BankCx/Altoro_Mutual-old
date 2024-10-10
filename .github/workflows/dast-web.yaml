@@ -18,8 +18,7 @@ jobs:
       - name: Start DAST scan
         uses: Checkmarx/dast-github-action@v1.0.6
         env:
-          #CX_APIKEY: ${{ secrets.AST_API_KEY }}
-          CX_APIKEY: eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIxOTY5OGFmOS1kNzI4LTQ2N2MtODU5ZS0yM2VmOGZiN2FjM2QifQ.eyJpYXQiOjE3MDczMjUwODAsImp0aSI6ImVhMDlmOTQyLTJhMzItNGI1ZS1hM2E3LTllNjQ1MDc3OWI3NCIsImlzcyI6Imh0dHBzOi8vaWFtLmNoZWNrbWFyeC5uZXQvYXV0aC9yZWFsbXMvcndfZGVtbyIsImF1ZCI6Imh0dHBzOi8vaWFtLmNoZWNrbWFyeC5uZXQvYXV0aC9yZWFsbXMvcndfZGVtbyIsInN1YiI6IjVhY2Y0MzhlLTE0ODEtNGZiMS1iZjM5LWYzZTg2OTE0ZTcyMCIsInR5cCI6Ik9mZmxpbmUiLCJhenAiOiJhc3QtYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImY2ZjYzNjkzLTQwM2UtNGVkNi04YzhmLTc3YjYxMmM4ZDMyZSIsInNjb3BlIjoiIG9mZmxpbmVfYWNjZXNzIiwic2lkIjoiZjZmNjM2OTMtNDAzZS00ZWQ2LThjOGYtNzdiNjEyYzhkMzJlIn0.BofVZL15xXtQEbNXJuz6sPK6uQZ4mOYRgE09Nt5C-Tk
+          CX_APIKEY: ${{ secrets.AST_API_KEY }}
         with:
           command: web
           # shallow scan to pass
