@@ -16,7 +16,7 @@ jobs:
       - name: Change workspace owner
         run: sudo chown -R 1000:1000 ${{ github.workspace }}
       - name: Start DAST scan
-        uses: Checkmarx/dast-github-action@v1.0.6
+        uses: Checkmarx/dast-github-action@v2.3.0
         env:
           CX_APIKEY: ${{ secrets.AST_API_KEY }}
         with:
