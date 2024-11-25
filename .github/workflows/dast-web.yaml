@@ -10,7 +10,7 @@ jobs:
     name: Checkmarx DAST - web scan
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.2.2
       - name: Create output folder
         run: mkdir ${{ github.workspace }}/output_folder
       - name: Change workspace owner
@@ -33,7 +33,7 @@ jobs:
           output: ${{ github.workspace }}/output_folder
       - name: Change output folder owner back to gh user
         run: sudo chown -R 1001:1001 ${{ github.workspace }}/output_folder
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4.4.3
         name: Upload artifacts
         with:
           name: report
