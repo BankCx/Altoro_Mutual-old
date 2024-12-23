@@ -22,7 +22,7 @@ jobs:
         with:
           command: web
           config: ${{ github.workspace }}/dast-config/Altoro_Mutual-web-lily.yaml
-          environment_id: ed6f56c8-5c51-4671-b4c5-a00339608fd8d
+          environment_id: ed6f56c8-5c51-4671-b4c5-a00339608fd8
           log_level: debug
           base_url: https://us.ast.checkmarx.net/
           verbose: true
