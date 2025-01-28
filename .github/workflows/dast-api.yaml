@@ -19,6 +19,7 @@ jobs:
         uses: Checkmarx/dast-github-action@v2.3.0
         env:
           CX_APIKEY: ${{ secrets.AST_API_KEY }}
+          FAKE_KEY: "abc123"
         with:
           command: api
           config: ${{ github.workspace }}/dast-config/Altoro_Mutual-API.yaml
