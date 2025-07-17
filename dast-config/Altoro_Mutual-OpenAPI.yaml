@@ -1,6 +1,3 @@
-openapi: 3.0.0
-servers:
-  - url: http://testfire.net/
 basePath: /api
 paths:
   /login:
