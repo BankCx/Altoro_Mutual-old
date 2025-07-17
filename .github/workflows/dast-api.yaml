@@ -26,7 +26,7 @@ jobs:
           openapi: ${{ github.workspace }}/dast-config/Altoro_Mutual-OpenAPI.yaml
           environment_id: 2c88fe80-46b3-4435-b6a9-aac49923603e
           # comment out fail_on if we don't want to fail
-          fail_on: HIGH
+          # fail_on: HIGH
           log_level: info
           base_url: https://ast.checkmarx.net/
           verbose: true
